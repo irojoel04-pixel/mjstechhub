@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MJ">
-  <rect width="64" height="64" rx="12" fill="#ffffff"/>
-  <rect x="4" y="4" width="56" height="56" rx="10" fill="none" stroke="#1769aa" stroke-width="3"/>
-  <text x="32" y="41" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="800" fill="#101820">MJ</text>
-</svg>
