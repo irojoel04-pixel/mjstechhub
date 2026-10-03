@@ -31,9 +31,9 @@
 }
 
 html {
-    /* Removed scroll-behavior: smooth to improve scroll performance.
-       Smooth scrolling causes synchronous layout blocking on every scroll event.
-       Performance gain: ~10% faster scroll responsiveness */
+    /* Performance optimization: removed scroll-behavior: smooth
+       to prevent synchronous layout blocking on every scroll event */
+    scroll-behavior: auto;
 }
 
 body {
