@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://irojoel04-pixel.github.io/mjstechhub/sitemap.xml
