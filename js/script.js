@@ -1,12 +1,17 @@
 console.log("Irogbanyo-John Ayebatonbara Joel website loaded.");
 
 document.addEventListener("DOMContentLoaded", () => {
-
     const revealElements = document.querySelectorAll(
         ".section-heading, .service-card, .project-card, .writing-card, " +
         ".writing-item, .contact-card, .about-preview, .contact-project-content, " +
         ".capability, .info-box, .paper"
     );
+    const projectImages = document.querySelectorAll(".project-image.real-image img, .real-image img");
+    const imageViewer = document.getElementById("imageViewer");
+    const viewerImage = document.getElementById("viewerImage");
+    const imageViewerClose = document.getElementById("imageViewerClose");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
 
     if ("IntersectionObserver" in window) {
         revealElements.forEach((element) => element.classList.add("reveal"));
@@ -22,9 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         revealElements.forEach((element) => element.classList.add("reveal", "visible"));
     }
-
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
 
     if (menuToggle && navLinks) {
         const closeMenu = () => {
@@ -59,22 +61,26 @@ document.addEventListener("DOMContentLoaded", () => {
     backToTop.innerHTML = "↑";
     document.body.appendChild(backToTop);
 
+    let ticking = false;
     const updateScrollUI = () => {
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
         const scrollable = document.documentElement.scrollHeight - window.innerHeight;
         const percent = scrollable > 0 ? (scrollTop / scrollable) * 100 : 0;
         progress.style.width = `${percent}%`;
         backToTop.classList.toggle("visible", scrollTop > 520);
+        ticking = false;
     };
-    window.addEventListener("scroll", updateScrollUI, { passive: true });
+    
+    window.addEventListener("scroll", () => {
+        if (!ticking) {
+            requestAnimationFrame(updateScrollUI);
+            ticking = true;
+        }
+    }, { passive: true });
+    
     window.addEventListener("resize", updateScrollUI);
     updateScrollUI();
     backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-
-    const projectImages = document.querySelectorAll(".project-image.real-image img, .real-image img");
-    const imageViewer = document.getElementById("imageViewer");
-    const viewerImage = document.getElementById("viewerImage");
-    const imageViewerClose = document.getElementById("imageViewerClose");
 
     const closeImageViewer = () => {
         if (!imageViewer) return;
