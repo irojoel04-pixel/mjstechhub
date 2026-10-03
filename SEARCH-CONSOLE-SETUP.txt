@@ -1,0 +1,30 @@
+MJSTECHHUB — GOOGLE SEARCH CONSOLE
+
+Current public site:
+https://mjshub.netlify.app/
+
+1. In Google Search Console, add a URL-prefix property:
+   https://mjshub.netlify.app/
+
+2. Verify ownership using the HTML verification file Google provides.
+
+3. Open Indexing -> Sitemaps.
+
+4. Submit:
+   https://mjshub.netlify.app/sitemap.xml
+
+5. Use URL Inspection for the homepage and the main pages:
+   https://mjshub.netlify.app/
+   https://mjshub.netlify.app/about.html
+   https://mjshub.netlify.app/work.html
+   https://mjshub.netlify.app/projects.html
+   https://mjshub.netlify.app/writing.html
+   https://mjshub.netlify.app/contact.html
+
+6. Request indexing for important pages after the Netlify site is publicly reachable.
+
+7. Confirm these public files load:
+   https://mjshub.netlify.app/robots.txt
+   https://mjshub.netlify.app/sitemap.xml
+
+Note: mjstechhub.com is not currently used because the custom domain has not been registered/connected.

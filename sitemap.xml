@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://irojoel04-pixel.github.io/mjstechhub/</loc></url>
-  <url><loc>https://irojoel04-pixel.github.io/mjstechhub/about.html</loc></url>
-  <url><loc>https://irojoel04-pixel.github.io/mjstechhub/work.html</loc></url>
-  <url><loc>https://irojoel04-pixel.github.io/mjstechhub/projects.html</loc></url>
-  <url><loc>https://irojoel04-pixel.github.io/mjstechhub/writing.html</loc></url>
-  <url><loc>https://irojoel04-pixel.github.io/mjstechhub/contact.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://mjshub.netlify.app/</loc></url>
+  <url><loc>https://mjshub.netlify.app/about.html</loc></url>
+  <url><loc>https://mjshub.netlify.app/work.html</loc></url>
+  <url><loc>https://mjshub.netlify.app/projects.html</loc></url>
+  <url><loc>https://mjshub.netlify.app/writing.html</loc></url>
+  <url><loc>https://mjshub.netlify.app/contact.html</loc></url>
 </urlset>
