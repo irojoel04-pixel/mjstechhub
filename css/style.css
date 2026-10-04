@@ -5725,3 +5725,516 @@ footer { background:#060a0e!important; border-color:var(--line)!important; }
         border-radius: 18px !important;
     }
 }
+
+
+/* Modern contact form modal */
+body.modal-open {
+    overflow: hidden;
+}
+
+.contact-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease, visibility .25s ease;
+}
+
+.contact-modal.is-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.contact-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 5, 12, .76);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.contact-modal-dialog {
+    position: relative;
+    width: min(680px, 100%);
+    max-height: min(88vh, 820px);
+    overflow-y: auto;
+    padding: 38px;
+    border: 1px solid rgba(255, 122, 69, .58);
+    border-radius: 28px;
+    background: linear-gradient(145deg, rgba(15, 21, 34, .97), rgba(7, 12, 22, .96));
+    box-shadow: 0 35px 100px rgba(0,0,0,.62), 0 0 0 1px rgba(255,255,255,.04) inset, 0 0 45px rgba(255,122,69,.10);
+    transform: translateY(22px) scale(.97);
+    transition: transform .28s cubic-bezier(.2,.8,.2,1);
+}
+
+.contact-modal.is-open .contact-modal-dialog {
+    transform: translateY(0) scale(1);
+}
+
+.contact-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 50%;
+    background: rgba(255,255,255,.06);
+    color: #fff;
+    font-size: 27px;
+    line-height: 1;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.contact-modal-close:hover,
+.contact-modal-close:focus-visible {
+    color: #fff;
+    border-color: rgba(255,122,69,.75);
+    background: rgba(255,122,69,.16);
+    transform: rotate(90deg);
+    outline: none;
+}
+
+.contact-modal-header {
+    max-width: 560px;
+    padding-right: 44px;
+    margin-bottom: 26px;
+}
+
+.contact-modal-header h2 {
+    margin: 8px 0 10px;
+    color: #fff;
+}
+
+.contact-modal-header p {
+    margin: 0;
+    color: #cbd6e3;
+    line-height: 1.7;
+}
+
+.contact-modal .contact-form {
+    display: grid;
+    gap: 18px;
+}
+
+.contact-modal .form-field {
+    display: grid;
+    gap: 8px;
+}
+
+.contact-modal .form-field label {
+    color: #eef4fa;
+    font-weight: 600;
+    font-size: .92rem;
+}
+
+.contact-modal .form-field input,
+.contact-modal .form-field select,
+.contact-modal .form-field textarea {
+    width: 100%;
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 13px;
+    padding: 13px 14px;
+    background: rgba(255,255,255,.055);
+    color: #fff;
+    font: inherit;
+    outline: none;
+    transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.contact-modal .form-field select option {
+    background: #0c1321;
+    color: #fff;
+}
+
+.contact-modal .form-field textarea {
+    min-height: 145px;
+    resize: vertical;
+}
+
+.contact-modal .form-field input:focus,
+.contact-modal .form-field select:focus,
+.contact-modal .form-field textarea:focus {
+    border-color: rgba(255,122,69,.9);
+    background: rgba(255,255,255,.075);
+    box-shadow: 0 0 0 4px rgba(255,122,69,.11);
+}
+
+.contact-modal .button.primary {
+    justify-self: start;
+    margin-top: 2px;
+}
+
+.contact-modal .form-note {
+    margin: -6px 0 0;
+    color: #9eacba;
+    font-size: .85rem;
+}
+
+.contact-form-toggle .cta-arrow,
+.contact-modal .cta-arrow {
+    display: inline-block;
+    margin-left: 7px;
+    transition: transform .2s ease;
+}
+
+.contact-form-toggle:hover .cta-arrow,
+.contact-form-toggle:focus-visible .cta-arrow,
+.contact-modal .button.primary:hover .cta-arrow {
+    transform: translateX(5px);
+}
+
+@media (max-width: 700px) {
+    .contact-modal {
+        padding: 14px;
+    }
+
+    .contact-modal-dialog {
+        padding: 30px 22px 24px;
+        border-radius: 22px;
+        max-height: 92vh;
+    }
+
+    .contact-modal-header {
+        padding-right: 40px;
+    }
+
+    .contact-modal-close {
+        top: 13px;
+        right: 13px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-modal,
+    .contact-modal-dialog,
+    .contact-modal-close {
+        transition: none;
+    }
+}
+
+/* =========================================
+   MJ HUB GLOBAL CTA STYLE
+========================================= */
+
+.button.primary,
+a.button.primary,
+button.button.primary {
+    background: #FF7A45 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #FF7A45 !important;
+    box-shadow: none;
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.button.primary:hover,
+.button.primary:focus-visible,
+a.button.primary:hover,
+a.button.primary:focus-visible,
+button.button.primary:hover,
+button.button.primary:focus-visible {
+    background: #D9572A !important;
+    color: #FFFFFF !important;
+    border-color: #FF9A70 !important;
+    box-shadow: 0 10px 30px rgba(255, 122, 69, 0.25);
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   HOMEPAGE CTA LINKS
+========================================= */
+
+/* Main CTA buttons */
+.hero-buttons .button,
+.hero-new .button {
+    background: #FF7A45 !important;
+    color: #FFFFFF !important;
+    border-color: #FF7A45 !important;
+}
+
+/* Main CTA hover */
+.hero-buttons .button:hover,
+.hero-buttons .button:focus-visible,
+.hero-new .button:hover,
+.hero-new .button:focus-visible {
+    background: #D9572A !important;
+    color: #FFFFFF !important;
+    border-color: #FF9A70 !important;
+    box-shadow: 0 12px 30px rgba(255, 122, 69, 0.28) !important;
+    transform: translateY(-3px);
+}
+
+/* Homepage text CTAs */
+.home-cta,
+.home-cta a,
+.text-link,
+.view-all,
+.read-more,
+.explore-link {
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Orange text CTA */
+.home-cta a,
+.text-link,
+.view-all,
+.read-more,
+.explore-link {
+    color: #FF7A45 !important;
+}
+
+/* Hover treatment */
+.home-cta a:hover,
+.home-cta a:focus-visible,
+.text-link:hover,
+.text-link:focus-visible,
+.view-all:hover,
+.view-all:focus-visible,
+.read-more:hover,
+.read-more:focus-visible,
+.explore-link:hover,
+.explore-link:focus-visible {
+    color: #FF9A70 !important;
+    transform: translateX(4px);
+}
+
+/* CTA arrows */
+.home-cta a .cta-arrow,
+.text-link .cta-arrow,
+.view-all .cta-arrow,
+.read-more .cta-arrow,
+.explore-link .cta-arrow {
+    display: inline-block;
+    margin-left: 7px;
+    transition: transform 0.25s ease;
+}
+
+.home-cta a:hover .cta-arrow,
+.text-link:hover .cta-arrow,
+.view-all:hover .cta-arrow,
+.read-more:hover .cta-arrow,
+.explore-link:hover .cta-arrow {
+    transform: translateX(5px);
+}
+
+/* =========================================
+   HOMEPAGE FINAL CTA
+   ========================================= */
+
+.cta .home-final-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    background: #FF7A45 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #FF7A45 !important;
+
+    text-decoration: none;
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.cta .home-final-cta:hover {
+    background: #D9572A !important;
+    color: #FFFFFF !important;
+    border-color: #FF9A70 !important;
+
+    box-shadow:
+        0 12px 30px rgba(255, 122, 69, 0.28);
+
+    transform: translateY(-3px);
+}
+
+.cta .home-final-cta .cta-arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+.cta .home-final-cta:hover .cta-arrow {
+    transform: translateX(5px);
+}
+
+/* =========================================
+   HOMEPAGE VISIT LET'S TALK
+   ========================================= */
+
+.button.secondary.home-lets-talk {
+    background: #FF7A45 !important;
+    color: #FFFFFF !important;
+    border-color: #FF7A45 !important;
+    box-shadow: none !important;
+}
+
+.button.secondary.home-lets-talk:hover {
+    background: #D9572A !important;
+    color: #FFFFFF !important;
+    border-color: #FF9A70 !important;
+    box-shadow: 0 14px 30px rgba(255, 122, 69, 0.28) !important;
+    transform: translateY(-3px);
+}
+
+.button.secondary.home-lets-talk .cta-arrow {
+    display: inline-block;
+    margin-left: 4px;
+    transition: transform 0.25s ease;
+}
+
+.button.secondary.home-lets-talk:hover .cta-arrow {
+    transform: translateX(5px);
+}
+
+/* =========================================================
+   MOBILE CTA + INTERACTIVE SURFACE OPTIMIZATION
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* CTA buttons */
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .hero-buttons .button {
+        width: 100%;
+        min-height: 48px;
+        justify-content: center;
+    }
+
+    /* Keep the arrow comfortable on touch screens */
+    .cta-arrow {
+        margin-left: 8px;
+        transform: none !important;
+    }
+
+    /* Prevent desktop hover movement from feeling awkward on mobile */
+    .button:hover,
+    .button:focus-visible {
+        transform: none;
+    }
+
+    /* Interactive cards */
+    .project-card:hover,
+    .service-card:hover,
+    .writing-card:hover,
+    .mechanical-card:hover,
+    .programming-card:hover,
+    .paper:hover {
+        transform: none;
+    }
+
+    /* Give touch users a clear active response */
+    .button:active {
+        transform: scale(0.98);
+        box-shadow: 0 6px 18px var(--cta-glow);
+    }
+
+    .project-card:active,
+    .service-card:active,
+    .writing-card:active,
+    .mechanical-card:active,
+    .programming-card:active,
+    .paper:active {
+        border-color: var(--cta);
+        background: rgba(255, 122, 69, 0.06);
+    }
+
+    /* Make text links easy to tap */
+    .text-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+
+    .hero-buttons {
+        gap: 10px;
+    }
+
+    .hero-buttons .button {
+        min-height: 50px;
+        padding: 13px 18px;
+    }
+
+    .cta-arrow {
+        margin-left: 7px;
+    }
+}
+
+/* ================================
+   NAVIGATION BAR FIX
+================================ */
+
+.site-header,
+header,
+.navbar,
+.nav-wrap,
+nav {
+    background: rgba(10, 14, 22, 0.92) !important;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Navigation links */
+.nav-links a,
+nav a {
+    color: #ffffff !important;
+}
+
+/* Hover and active navigation links */
+.nav-links a:hover,
+.nav-links a:focus-visible,
+nav a:hover,
+nav a:focus-visible {
+    color: #ff7a45 !important;
+}
+
+/* Active/current page */
+.nav-links a.active,
+.nav-links a[aria-current="page"],
+nav a.active,
+nav a[aria-current="page"] {
+    color: #ff7a45 !important;
+}
+
+/* Mobile menu */
+.nav-links {
+    background: rgba(10, 14, 22, 0.96);
+}
+
+/* Hamburger icon */
+.menu-toggle span,
+.hamburger span {
+    background: #ffffff !important;
+}
+

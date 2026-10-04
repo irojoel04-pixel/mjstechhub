@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mjshub.netlify.app/sitemap.xml
+# Replace YOUR-DOMAIN.COM with your actual domain before publishing.
+Sitemap: https://YOUR-DOMAIN.COM/sitemap.xml
