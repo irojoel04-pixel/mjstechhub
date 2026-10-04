@@ -5528,7 +5528,7 @@ footer { background:#060a0e!important; border-color:var(--line)!important; }
 
 
 /* ABOUT PROFILE — final requested positioning */
-.profile-photo-frame.profile-photo-circle img { object-position: 255% 595% !important; transform: scale(1.62) !important; transform-origin: 50% 50% !important; }
+.profile-photo-frame.profile-photo-circle img { object-position: 30% 140% !important; transform: scale(2.50) !important; transform-origin: 19% 0% !important; }
 
 
 /* =========================================================
