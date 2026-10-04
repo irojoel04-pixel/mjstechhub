@@ -5528,4 +5528,200 @@ footer { background:#060a0e!important; border-color:var(--line)!important; }
 
 
 /* ABOUT PROFILE — final requested positioning */
-.profile-photo-frame.profile-photo-circle img { object-position: 10% 140% !important; transform: scale(2.50) !important; transform-origin: 19% 0% !important; }
+.profile-photo-frame.profile-photo-circle img { object-position: 255% 595% !important; transform: scale(1.62) !important; transform-origin: 50% 50% !important; }
+
+
+/* =========================================================
+   CONTACT PAGE — COLORFUL SOCIAL / NETWORK VISUAL SYSTEM
+   Uses the supplied contact artwork while keeping all writing
+   readable through layered dark glass surfaces and overlays.
+========================================================= */
+.contact-art-hero,
+.contact-art-section,
+.contact-art-project {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.contact-art-hero {
+    min-height: 68vh;
+    background-image:
+        linear-gradient(90deg,
+            rgba(5, 9, 18, .96) 0%,
+            rgba(5, 9, 18, .86) 42%,
+            rgba(5, 9, 18, .58) 72%,
+            rgba(5, 9, 18, .42) 100%),
+        url("../images/contact.jpg") !important;
+    background-size: cover, cover !important;
+    background-position: center, center !important;
+    background-repeat: no-repeat, no-repeat !important;
+}
+
+.contact-art-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 78% 28%, rgba(111,99,255,.18), transparent 30%),
+        linear-gradient(135deg, rgba(143,211,255,.08), transparent 42%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.contact-art-hero > div {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 38px 42px;
+    background: rgba(6, 10, 18, .66);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 24px;
+    box-shadow: 0 28px 80px rgba(0,0,0,.38);
+    backdrop-filter: blur(9px);
+}
+
+.contact-art-hero h1 {
+    color: #ffffff !important;
+    text-shadow: 0 3px 24px rgba(0,0,0,.38);
+}
+
+.contact-art-hero .hero-description {
+    color: #e2e9f2 !important;
+    max-width: 760px;
+}
+
+.contact-art-section {
+    background-image:
+        linear-gradient(90deg,
+            rgba(5, 9, 18, .94) 0%,
+            rgba(5, 9, 18, .86) 50%,
+            rgba(5, 9, 18, .72) 100%),
+        url("../images/contact-1.jpg") !important;
+    background-size: cover, cover !important;
+    background-position: center, center !important;
+    background-repeat: no-repeat, no-repeat !important;
+}
+
+.contact-art-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(111,99,255,.08), transparent 48%, rgba(143,211,255,.07));
+    pointer-events: none;
+    z-index: 0;
+}
+
+.contact-art-section > .section-heading,
+.contact-art-section > .contact-grid {
+    position: relative;
+    z-index: 2;
+}
+
+.contact-art-section > .section-heading {
+    max-width: 850px;
+}
+
+.contact-art-section .section-heading h2 {
+    color: #ffffff !important;
+}
+
+.contact-art-section .section-heading > p:not(.eyebrow) {
+    color: #d9e3ee !important;
+}
+
+.contact-art-section .contact-card {
+    background: rgba(7, 13, 22, .84) !important;
+    border: 1px solid rgba(255,255,255,.16) !important;
+    border-radius: 22px !important;
+    box-shadow: 0 24px 65px rgba(0,0,0,.34);
+    backdrop-filter: blur(9px);
+}
+
+.contact-art-section .contact-card:hover {
+    background: rgba(16, 23, 38, .92) !important;
+    border-color: rgba(111,99,255,.52) !important;
+    transform: translateY(-8px);
+}
+
+.contact-art-section .contact-card h3 {
+    color: #ffffff !important;
+}
+
+.contact-art-section .contact-card p {
+    color: #d7e1eb !important;
+}
+
+.contact-art-section .contact-number {
+    color: #A89FFF !important;
+}
+
+.contact-art-section .contact-card .text-link {
+    color: #B9B2FF !important;
+}
+
+.contact-art-section .contact-card .text-link:hover {
+    color: #ffffff !important;
+}
+
+.contact-art-project {
+    background-image:
+        linear-gradient(90deg,
+            rgba(5, 9, 18, .95) 0%,
+            rgba(5, 9, 18, .82) 48%,
+            rgba(5, 9, 18, .62) 100%),
+        url("../images/contact.jpg") !important;
+    background-size: cover, cover !important;
+    background-position: center, 70% center !important;
+    background-repeat: no-repeat, no-repeat !important;
+}
+
+.contact-art-project::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 78% 50%, rgba(111,99,255,.16), transparent 34%);
+    pointer-events: none;
+}
+
+.contact-art-project .contact-project-content {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+    padding: 38px 42px;
+    background: rgba(6, 10, 18, .72);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 24px;
+    box-shadow: 0 28px 80px rgba(0,0,0,.38);
+    backdrop-filter: blur(9px);
+}
+
+.contact-art-project h2 {
+    color: #ffffff !important;
+}
+
+.contact-art-project p {
+    color: #dce5ef !important;
+}
+
+.contact-art-project .button.primary {
+    box-shadow: 0 14px 36px rgba(111,99,255,.22);
+}
+
+@media (max-width: 700px) {
+    .contact-art-hero,
+    .contact-art-section,
+    .contact-art-project {
+        background-position: center, 62% center !important;
+    }
+
+    .contact-art-hero > div,
+    .contact-art-project .contact-project-content {
+        padding: 28px 24px;
+        border-radius: 20px;
+    }
+
+    .contact-art-section .contact-card {
+        border-radius: 18px !important;
+    }
+}
