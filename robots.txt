@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-# Replace YOUR-DOMAIN.COM with your actual domain before publishing.
-Sitemap: https://YOUR-DOMAIN.COM/sitemap.xml
+Sitemap:
+https://irojoel04-pixel.github.io/mjstechhub/sitemap.xml
