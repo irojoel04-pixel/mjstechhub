@@ -6564,3 +6564,28 @@ nav a[aria-current="page"] {
         min-height: 145px;
     }
 }
+
+/* Enquiry Type dropdown */
+.contact-form select#contact-enquiry {
+    background: rgba(11, 16, 32, 0.95);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color-scheme: dark;
+}
+
+.contact-form select#contact-enquiry option {
+    background: #0b1020;
+    color: #ffffff;
+}
+
+.contact-form select#contact-enquiry option:checked {
+    background: #1b2440;
+    color: #ffffff;
+}
+
+.contact-form select#contact-enquiry:focus {
+    background: rgba(11, 16, 32, 0.98);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+    outline: none;
+}
