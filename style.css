@@ -6193,87 +6193,90 @@ button.button:active {
 
 
 /* =========================================================
-   MJ HUB — COMPACT START A CONVERSATION MODAL
-   Final popup correction. Keeps the existing site styling intact.
+   MJ HUB — CENTERED COMPACT START A CONVERSATION MODAL
+   Keeps the existing site styling intact.
 ========================================================= */
 .contact-form-panel {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 28px 20px !important;
+    padding: 20px !important;
+    overflow: hidden !important;
 }
 
 .contact-form-panel .contact-form {
     position: relative !important;
-    width: min(560px, 100%) !important;
-    max-height: min(760px, calc(100vh - 56px)) !important;
+    width: min(500px, calc(100vw - 40px)) !important;
+    max-height: min(720px, calc(100vh - 40px)) !important;
     overflow-y: auto !important;
-    margin: 0 auto !important;
-    padding: 34px 30px 28px !important;
-    border-radius: 20px !important;
+    margin: 0 !important;
+    padding: 26px 24px 22px !important;
+    border-radius: 18px !important;
 }
 
 .contact-form-modal-heading {
-    margin: 0 48px 6px 0 !important;
+    margin: 0 46px 6px 0 !important;
     color: #ffffff !important;
-    font-size: clamp(22px, 3vw, 28px) !important;
+    font-size: clamp(21px, 2.6vw, 26px) !important;
     line-height: 1.2 !important;
     font-weight: 700 !important;
 }
 
 .contact-form-modal-intro {
-    margin: 0 48px 24px 0 !important;
+    margin: 0 46px 18px 0 !important;
     color: #aebbc4 !important;
-    font-size: 13px !important;
-    line-height: 1.6 !important;
+    font-size: 12.5px !important;
+    line-height: 1.55 !important;
 }
 
 .contact-form-panel .contact-form-close {
     position: absolute !important;
-    top: 16px !important;
-    right: 16px !important;
-    z-index: 20 !important;
-    width: 38px !important;
-    height: 38px !important;
-    min-width: 38px !important;
+    top: 12px !important;
+    right: 12px !important;
+    z-index: 30 !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
     padding: 0 !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     border-radius: 10px !important;
-    font-size: 25px !important;
+    font-size: 24px !important;
     line-height: 1 !important;
 }
 
 @media (max-width: 700px) {
     .contact-form-panel {
-        align-items: flex-start !important;
-        padding: 18px 12px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 14px !important;
     }
 
     .contact-form-panel .contact-form {
-        width: 100% !important;
-        max-height: calc(100vh - 36px) !important;
-        padding: 30px 18px 22px !important;
-        border-radius: 18px !important;
+        width: min(470px, calc(100vw - 28px)) !important;
+        max-height: calc(100vh - 28px) !important;
+        padding: 24px 18px 20px !important;
+        border-radius: 17px !important;
     }
 
     .contact-form-panel .contact-form-close {
-        top: 12px !important;
-        right: 12px !important;
-        width: 36px !important;
-        height: 36px !important;
-        min-width: 36px !important;
-    }
-
-    .contact-form-modal-heading {
-        margin-right: 44px !important;
+        top: 10px !important;
+        right: 10px !important;
+        width: 34px !important;
+        height: 34px !important;
+        min-width: 34px !important;
         font-size: 22px !important;
     }
 
-    .contact-form-modal-intro {
+    .contact-form-modal-heading {
         margin-right: 42px !important;
-        margin-bottom: 20px !important;
+        font-size: 21px !important;
+    }
+
+    .contact-form-modal-intro {
+        margin-right: 40px !important;
+        margin-bottom: 16px !important;
         font-size: 12px !important;
     }
 }
