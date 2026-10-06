@@ -159,12 +159,12 @@
 
 <button class="button primary" type="submit">Send</button>
 <p aria-live="polite" class="form-status" id="form-status" role="status"></p>
-</form>
 
 <p class="form-note">
 Your message will be sent securely through the site's form service. You can also use
 <a class="text-link" href="mailto:johnjoel5588@gmail.com">direct email</a>.
 </p>
+</form>
 </div>
 </section>
 </main>
@@ -220,17 +220,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     toggle.addEventListener("click", function () {
         const opening = panel.hidden;
-        panel.hidden = !opening;
-        toggle.setAttribute("aria-expanded", String(opening));
 
         if (opening) {
-            panel.scrollIntoView({ behavior: "smooth", block: "center" });
+            /* Keep the modal attached directly to <body> so fixed positioning
+               is always relative to the real browser viewport. */
+            if (panel.parentElement !== document.body) {
+                document.body.appendChild(panel);
+            }
+
+            panel.hidden = false;
+            toggle.setAttribute("aria-expanded", "true");
+
             const firstField = form.querySelector("input:not([tabindex='-1']), select, textarea");
             if (firstField) {
                 setTimeout(function () {
                     firstField.focus();
                 }, 180);
             }
+        } else {
+            panel.hidden = true;
+            toggle.setAttribute("aria-expanded", "false");
         }
     });
 
