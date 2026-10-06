@@ -5728,465 +5728,130 @@ footer { background:#060a0e!important; border-color:var(--line)!important; }
 
 
 /* =========================================================
-   MJ HUB FINAL UI POLISH
-   Dark glass navigation, restrained amber CTAs and a proper
-   contact conversation modal. Applied last so older theme rules
-   cannot turn these surfaces white again.
+   CONTACT POPUP — COMPACT, CENTERED, CLEAR EXIT
 ========================================================= */
-:root {
-    --cta-amber: #b96a2f;
-    --cta-amber-light: #d08a4d;
-    --glass: rgba(9, 14, 21, 0.72);
-    --glass-strong: rgba(7, 11, 17, 0.92);
-    --glass-line: rgba(255,255,255,.14);
-}
 
-/* NAVIGATION: permanently dark on desktop and mobile */
-.site-header,
-.navbar {
-    background: rgba(7, 12, 18, .88) !important;
-    border-bottom: 1px solid rgba(184,205,211,.18) !important;
-    box-shadow: 0 10px 35px rgba(0,0,0,.18) !important;
-    backdrop-filter: blur(18px) saturate(125%);
-    -webkit-backdrop-filter: blur(18px) saturate(125%);
-}
-
-.site-logo,
-.logo {
-    color: #f5f7f8 !important;
-}
-
-.site-logo:hover,
-.logo:hover {
-    color: var(--cta-amber-light) !important;
-    border-color: rgba(208,138,77,.55) !important;
-}
-
-.nav-links a {
-    color: #d8e1e5 !important;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: #f1c49b !important;
-}
-
-.nav-links a::after,
-.nav-links a.active::after {
-    background: var(--cta-amber) !important;
-}
-
-/* Mobile menu: same dark glass language, never white */
-.menu-toggle {
-    background: rgba(12,18,26,.82) !important;
-    border-color: rgba(255,255,255,.16) !important;
-    color: #f5f7f8 !important;
-    border-radius: 12px !important;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-}
-
-.menu-toggle span {
-    background: #f5f7f8 !important;
-}
-
-.menu-toggle:hover {
-    border-color: rgba(208,138,77,.58) !important;
-}
-
-@media (max-width: 700px) {
-    .site-header {
-        background: rgba(7,12,18,.92) !important;
-    }
-
-    .nav-container {
-        min-height: 64px;
-    }
-
-    .nav-container > .nav-links,
-    .nav-links {
-        background: rgba(7,12,18,.96) !important;
-        border-bottom: 1px solid rgba(255,255,255,.12) !important;
-        box-shadow: 0 24px 55px rgba(0,0,0,.42) !important;
-        backdrop-filter: blur(20px) saturate(125%);
-        -webkit-backdrop-filter: blur(20px) saturate(125%);
-    }
-
-    .nav-links a {
-        color: #d8e1e5 !important;
-        border-bottom-color: rgba(255,255,255,.08) !important;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-        color: #f1c49b !important;
-        background: rgba(255,255,255,.025) !important;
-    }
-}
-
-/* ALL LINKING CTAs: restrained dark amber instead of blue */
-.button.primary,
-.home-writing-section .writing-card .button.secondary {
-    background: var(--cta-amber) !important;
-    border-color: var(--cta-amber) !important;
-    color: #fff8f1 !important;
-    box-shadow: 0 12px 28px rgba(185,106,47,.16) !important;
-}
-
-.button.primary::before {
-    background: transparent !important;
-}
-
-.button.primary:hover,
-.button.primary:focus-visible,
-.home-writing-section .writing-card .button.secondary:hover {
-    background: rgba(9,14,21,.46) !important;
-    border-color: var(--cta-amber-light) !important;
-    color: #f1c49b !important;
-    box-shadow: 0 16px 38px rgba(0,0,0,.26) !important;
-    backdrop-filter: blur(10px) saturate(115%);
-    -webkit-backdrop-filter: blur(10px) saturate(115%);
-    transform: translateY(-3px);
-}
-
-.button.primary:hover::before {
-    transform: translateX(-101%) !important;
-}
-
-/* Keep secondary buttons quiet and monochrome */
-.button.secondary {
-    background: rgba(255,255,255,.035) !important;
-    border-color: rgba(255,255,255,.20) !important;
-    color: #e8edf1 !important;
-}
-
-.button.secondary:hover {
-    background: rgba(255,255,255,.075) !important;
-    border-color: rgba(255,255,255,.34) !important;
-    color: #ffffff !important;
-    box-shadow: 0 14px 32px rgba(0,0,0,.22) !important;
-}
-
-/* START A CONVERSATION: make the existing panel behave like a real modal */
-.contact-form-close {
-    position: fixed;
-    top: 22px;
-    right: 26px;
-    z-index: 2005;
-    width: 44px;
-    height: 44px;
-    display: grid;
-    place-items: center;
-    border: 1px solid rgba(255,255,255,.16);
-    border-radius: 12px;
-    background: rgba(10,16,24,.82);
-    color: #f5f7f8;
-    font-size: 28px;
-    line-height: 1;
-    cursor: pointer;
-    box-shadow: 0 12px 30px rgba(0,0,0,.28);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    transition: transform .25s ease, border-color .25s ease, color .25s ease, background .25s ease;
-}
-
-.contact-form-close:hover,
-.contact-form-close:focus-visible {
-    transform: rotate(90deg);
-    border-color: rgba(208,138,77,.62);
-    color: #f1c49b;
-    background: rgba(185,106,47,.12);
-    outline: none;
+.contact-form-panel {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 3000 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 24px !important;
+    background: rgba(5, 9, 14, 0.58) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    overflow-y: auto !important;
 }
 
 .contact-form-panel[hidden] {
     display: none !important;
 }
 
-.contact-form-panel {
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 2000 !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 32px 20px !important;
-    overflow-y: auto !important;
-    background: rgba(2,6,11,.68) !important;
-    backdrop-filter: blur(12px) saturate(115%) !important;
-    -webkit-backdrop-filter: blur(12px) saturate(115%) !important;
-    animation: mjModalIn .22s ease both;
-}
-
-.contact-form-panel::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 15%, rgba(185,106,47,.08), transparent 38%);
-    pointer-events: none;
-}
-
-.contact-form-panel .contact-form,
-.contact-form-panel .form-note {
-    position: relative;
-    z-index: 2;
-    width: min(680px, 100%);
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .contact-form-panel .contact-form {
-    padding: 32px;
-    background: rgba(11,17,25,.94) !important;
-    border: 1px solid rgba(255,255,255,.14) !important;
-    border-radius: 22px !important;
-    box-shadow: 0 30px 90px rgba(0,0,0,.48) !important;
-    backdrop-filter: blur(18px) saturate(120%);
-    -webkit-backdrop-filter: blur(18px) saturate(120%);
-}
-
-.contact-form-panel .form-note {
-    margin-top: 14px;
-    padding: 0 8px 12px;
-    color: #aebbc4 !important;
-    font-size: 12px;
-    text-align: center;
+    position: relative !important;
+    width: min(560px, calc(100vw - 36px)) !important;
+    max-height: min(720px, calc(100vh - 48px)) !important;
+    overflow-y: auto !important;
+    margin: 0 !important;
+    padding: 38px 32px 30px !important;
+    background: rgba(10, 16, 23, 0.94) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55), 0 0 34px rgba(185, 106, 47, 0.10) !important;
+    color: #ffffff !important;
 }
 
 .contact-form-panel .form-field {
-    margin-bottom: 18px;
+    margin-bottom: 16px !important;
 }
 
-.contact-form-panel label {
-    display: block;
-    margin-bottom: 7px;
-    color: #dce5eb !important;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .04em;
+.contact-form-panel .form-field label {
+    display: block !important;
+    margin-bottom: 7px !important;
+    color: rgba(255,255,255,.78) !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: .4px !important;
 }
 
-.contact-form-panel input,
-.contact-form-panel select,
-.contact-form-panel textarea {
-    width: 100%;
-    border: 1px solid rgba(255,255,255,.13) !important;
-    border-radius: 12px !important;
-    background: rgba(255,255,255,.045) !important;
-    color: #f5f7f8 !important;
-    caret-color: var(--cta-amber-light);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
-    transition: border-color .25s ease, background .25s ease, box-shadow .25s ease;
-}
-
-.contact-form-panel input,
-.contact-form-panel select {
-    min-height: 48px;
-    padding: 0 14px;
-}
-
-.contact-form-panel textarea {
-    padding: 13px 14px;
-    resize: vertical;
-}
-
-.contact-form-panel input:focus,
-.contact-form-panel select:focus,
-.contact-form-panel textarea:focus {
+.contact-form-panel .form-field input,
+.contact-form-panel .form-field select,
+.contact-form-panel .form-field textarea {
+    width: 100% !important;
+    background: rgba(255,255,255,.055) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255,255,255,.15) !important;
+    border-radius: 10px !important;
+    padding: 12px 13px !important;
     outline: none !important;
-    border-color: rgba(208,138,77,.68) !important;
-    background: rgba(255,255,255,.065) !important;
-    box-shadow: 0 0 0 3px rgba(185,106,47,.10) !important;
 }
 
-/* Enquiry dropdown: dark native menu instead of white */
-.contact-form-panel select,
-.contact-form select#contact-enquiry {
-    color-scheme: dark !important;
-    appearance: auto;
-    background-color: #0d141b !important;
-    color: #f5f7f8 !important;
+.contact-form-panel .form-field textarea {
+    min-height: 125px !important;
+    resize: vertical !important;
 }
 
-.contact-form-panel select option,
-.contact-form select#contact-enquiry option {
-    background: #0d141b !important;
-    color: #f5f7f8 !important;
+.contact-form-panel .form-field input:focus,
+.contact-form-panel .form-field select:focus,
+.contact-form-panel .form-field textarea:focus {
+    border-color: #b96a2f !important;
+    box-shadow: 0 0 0 3px rgba(185,106,47,.14), 0 0 18px rgba(185,106,47,.10) !important;
 }
 
-.contact-form-panel select option:checked,
-.contact-form select#contact-enquiry option:checked {
-    background: #2a211b !important;
-    color: #f1c49b !important;
+.contact-form-panel .contact-form > .button.primary {
+    width: 100% !important;
+    margin-top: 4px !important;
 }
 
-.contact-form-panel .button.primary {
-    width: 100%;
-    justify-content: center;
-    margin-top: 4px;
-}
-
-.form-status {
-    margin-top: 12px;
-    color: #cbd6dd !important;
-}
-
-.form-status[data-state="success"] { color: #9fd3b0 !important; }
-.form-status[data-state="error"] { color: #e3a4a4 !important; }
-
-@keyframes mjModalIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@media (max-width: 700px) {
-    .contact-form-close { top: 12px; right: 12px; width: 40px; height: 40px; }
-
-    .contact-form-panel {
-        padding: 14px !important;
-    }
-
-    .contact-form-panel .contact-form {
-        width: 100%;
-        padding: 22px 18px;
-        border-radius: 18px !important;
-    }
-
-    .contact-form-panel input,
-    .contact-form-panel select {
-        min-height: 50px;
-    }
-
-    .contact-form-panel textarea {
-        min-height: 150px;
-    }
-
-    .contact-form-panel .form-note {
-        font-size: 11px;
-    }
-}
-
-/* =========================================================
-   MJ HUB CTA FINAL OVERRIDE
-   One consistent CTA language across the entire site.
-   Normal: dark orange / amber.
-   Hover, focus and tap: translucent blurred surface with
-   an amber glow and amber outline/text.
-========================================================= */
-:root {
-    --cta-main: #b96a2f;
-    --cta-main-light: #d08a4d;
-    --cta-glow: rgba(185, 106, 47, .34);
-    --cta-surface: rgba(9, 14, 21, .38);
-}
-
-/* Every actual CTA button uses the same main orange treatment. */
-a.button,
-button.button,
-.button.primary,
-.button.secondary,
-.home-writing-section .writing-card .button.secondary {
-    background: var(--cta-main) !important;
-    border: 1px solid var(--cta-main) !important;
-    color: #fff8f1 !important;
-    box-shadow: 0 10px 28px rgba(185, 106, 47, .14) !important;
-    transition:
-        background .22s ease,
-        border-color .22s ease,
-        color .22s ease,
-        box-shadow .22s ease,
-        transform .22s ease,
-        backdrop-filter .22s ease !important;
-}
-
-/* Remove older colour-sweep effects that could bring blue back. */
-a.button::before,
-button.button::before,
-.button.primary::before,
-.button.secondary::before {
-    background: transparent !important;
-    opacity: 0 !important;
-}
-
-/* Hover / keyboard focus / touch: translucent blurred CTA with glow. */
-a.button:hover,
-a.button:focus-visible,
-a.button:active,
-button.button:hover,
-button.button:focus-visible,
-button.button:active,
-.button.primary:hover,
-.button.primary:focus-visible,
-.button.primary:active,
-.button.secondary:hover,
-.button.secondary:focus-visible,
-.button.secondary:active,
-.home-writing-section .writing-card .button.secondary:hover,
-.home-writing-section .writing-card .button.secondary:focus-visible,
-.home-writing-section .writing-card .button.secondary:active {
-    background: var(--cta-surface) !important;
-    border-color: var(--cta-main-light) !important;
-    color: #f1c49b !important;
-    box-shadow:
-        0 0 0 1px rgba(208, 138, 77, .16),
-        0 0 24px var(--cta-glow),
-        0 14px 38px rgba(0, 0, 0, .26) !important;
-    backdrop-filter: blur(12px) saturate(115%) !important;
-    -webkit-backdrop-filter: blur(12px) saturate(115%) !important;
-    transform: translateY(-2px);
-}
-
-/* A slightly stronger pressed state gives an obvious tap response. */
-a.button:active,
-button.button:active {
-    transform: translateY(0) scale(.985);
-    box-shadow:
-        0 0 0 1px rgba(208, 138, 77, .22),
-        0 0 30px rgba(185, 106, 47, .42),
-        0 8px 22px rgba(0, 0, 0, .24) !important;
-}
-
-/* Homepage writing CTA keeps the same treatment even where its
-   older section-specific rules have higher specificity. */
-.home-writing-section .writing-card a.button.secondary {
-    background: var(--cta-main) !important;
-    border-color: var(--cta-main) !important;
-    color: #fff8f1 !important;
-}
-
-.home-writing-section .writing-card a.button.secondary:hover,
-.home-writing-section .writing-card a.button.secondary:focus-visible,
-.home-writing-section .writing-card a.button.secondary:active {
-    background: var(--cta-surface) !important;
-    border-color: var(--cta-main-light) !important;
-    color: #f1c49b !important;
-    box-shadow:
-        0 0 0 1px rgba(208, 138, 77, .16),
-        0 0 24px var(--cta-glow),
-        0 14px 38px rgba(0, 0, 0, .26) !important;
-    backdrop-filter: blur(12px) saturate(115%) !important;
-    -webkit-backdrop-filter: blur(12px) saturate(115%) !important;
-}
-
-/* Contact modal close/exit control: visible, clean and easy to find. */
 .contact-form-close {
-    display: inline-flex !important;
+    position: fixed !important;
+    top: 20px !important;
+    right: 24px !important;
+    z-index: 3010 !important;
+    width: 46px !important;
+    height: 46px !important;
+    display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    background: rgba(9, 14, 21, .78) !important;
-    border: 1px solid rgba(208, 138, 77, .46) !important;
-    color: #f1c49b !important;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, .28) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(208,138,77,.72) !important;
+    border-radius: 50% !important;
+    background: rgba(8, 13, 19, .92) !important;
+    color: #d08a4d !important;
+    font-size: 28px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    box-shadow: 0 0 0 1px rgba(185,106,47,.08), 0 8px 26px rgba(0,0,0,.35) !important;
 }
 
 .contact-form-close:hover,
-.contact-form-close:focus-visible,
-.contact-form-close:active {
-    background: rgba(9, 14, 21, .48) !important;
-    border-color: var(--cta-main-light) !important;
-    color: #fff8f1 !important;
-    box-shadow: 0 0 24px rgba(185, 106, 47, .30) !important;
+.contact-form-close:focus-visible {
+    background: rgba(185,106,47,.16) !important;
+    border-color: #d08a4d !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 24px rgba(185,106,47,.30), 0 8px 26px rgba(0,0,0,.35) !important;
+    outline: none !important;
+    transform: rotate(90deg) !important;
+}
+
+@media (max-width: 600px) {
+    .contact-form-panel {
+        padding: 16px !important;
+    }
+
+    .contact-form-panel .contact-form {
+        width: min(100%, 520px) !important;
+        max-height: calc(100vh - 76px) !important;
+        padding: 34px 20px 22px !important;
+        border-radius: 17px !important;
+    }
+
+    .contact-form-close {
+        top: 12px !important;
+        right: 12px !important;
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 25px !important;
+    }
 }
