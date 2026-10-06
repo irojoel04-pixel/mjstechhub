@@ -5728,35 +5728,341 @@ footer { background:#060a0e!important; border-color:var(--line)!important; }
 
 
 /* =========================================================
-   CTA GLASS HOVER
-   Dark orange CTA with a subtle monochrome glass effect.
+   MJ HUB FINAL UI POLISH
+   Dark glass navigation, restrained amber CTAs and a proper
+   contact conversation modal. Applied last so older theme rules
+   cannot turn these surfaces white again.
 ========================================================= */
+:root {
+    --cta-amber: #b96a2f;
+    --cta-amber-light: #d08a4d;
+    --glass: rgba(9, 14, 21, 0.72);
+    --glass-strong: rgba(7, 11, 17, 0.92);
+    --glass-line: rgba(255,255,255,.14);
+}
 
-.button.primary {
-    background: #B9652A;
-    color: #ffffff;
-    border-color: #B9652A;
-    box-shadow: 0 10px 28px rgba(185, 101, 42, 0.18);
+/* NAVIGATION: permanently dark on desktop and mobile */
+.site-header,
+.navbar {
+    background: rgba(7, 12, 18, .88) !important;
+    border-bottom: 1px solid rgba(184,205,211,.18) !important;
+    box-shadow: 0 10px 35px rgba(0,0,0,.18) !important;
+    backdrop-filter: blur(18px) saturate(125%);
+    -webkit-backdrop-filter: blur(18px) saturate(125%);
+}
+
+.site-logo,
+.logo {
+    color: #f5f7f8 !important;
+}
+
+.site-logo:hover,
+.logo:hover {
+    color: var(--cta-amber-light) !important;
+    border-color: rgba(208,138,77,.55) !important;
+}
+
+.nav-links a {
+    color: #d8e1e5 !important;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #f1c49b !important;
+}
+
+.nav-links a::after,
+.nav-links a.active::after {
+    background: var(--cta-amber) !important;
+}
+
+/* Mobile menu: same dark glass language, never white */
+.menu-toggle {
+    background: rgba(12,18,26,.82) !important;
+    border-color: rgba(255,255,255,.16) !important;
+    color: #f5f7f8 !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.menu-toggle span {
+    background: #f5f7f8 !important;
+}
+
+.menu-toggle:hover {
+    border-color: rgba(208,138,77,.58) !important;
+}
+
+@media (max-width: 700px) {
+    .site-header {
+        background: rgba(7,12,18,.92) !important;
+    }
+
+    .nav-container {
+        min-height: 64px;
+    }
+
+    .nav-container > .nav-links,
+    .nav-links {
+        background: rgba(7,12,18,.96) !important;
+        border-bottom: 1px solid rgba(255,255,255,.12) !important;
+        box-shadow: 0 24px 55px rgba(0,0,0,.42) !important;
+        backdrop-filter: blur(20px) saturate(125%);
+        -webkit-backdrop-filter: blur(20px) saturate(125%);
+    }
+
+    .nav-links a {
+        color: #d8e1e5 !important;
+        border-bottom-color: rgba(255,255,255,.08) !important;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: #f1c49b !important;
+        background: rgba(255,255,255,.025) !important;
+    }
+}
+
+/* ALL LINKING CTAs: restrained dark amber instead of blue */
+.button.primary,
+.home-writing-section .writing-card .button.secondary {
+    background: var(--cta-amber) !important;
+    border-color: var(--cta-amber) !important;
+    color: #fff8f1 !important;
+    box-shadow: 0 12px 28px rgba(185,106,47,.16) !important;
 }
 
 .button.primary::before {
     background: transparent !important;
-    transform: none !important;
 }
 
 .button.primary:hover,
 .button.primary:focus-visible,
-.button.primary:active {
-    background: rgba(8, 12, 20, 0.22) !important;
-    color: #B9652A !important;
-    border-color: #B9652A !important;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+.home-writing-section .writing-card .button.secondary:hover {
+    background: rgba(9,14,21,.46) !important;
+    border-color: var(--cta-amber-light) !important;
+    color: #f1c49b !important;
+    box-shadow: 0 16px 38px rgba(0,0,0,.26) !important;
+    backdrop-filter: blur(10px) saturate(115%);
+    -webkit-backdrop-filter: blur(10px) saturate(115%);
+    transform: translateY(-3px);
 }
 
-.button.primary:hover::before,
-.button.primary:focus-visible::before,
-.button.primary:active::before {
-    transform: none !important;
+.button.primary:hover::before {
+    transform: translateX(-101%) !important;
+}
+
+/* Keep secondary buttons quiet and monochrome */
+.button.secondary {
+    background: rgba(255,255,255,.035) !important;
+    border-color: rgba(255,255,255,.20) !important;
+    color: #e8edf1 !important;
+}
+
+.button.secondary:hover {
+    background: rgba(255,255,255,.075) !important;
+    border-color: rgba(255,255,255,.34) !important;
+    color: #ffffff !important;
+    box-shadow: 0 14px 32px rgba(0,0,0,.22) !important;
+}
+
+/* START A CONVERSATION: make the existing panel behave like a real modal */
+.contact-form-close {
+    position: fixed;
+    top: 22px;
+    right: 26px;
+    z-index: 2005;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 12px;
+    background: rgba(10,16,24,.82);
+    color: #f5f7f8;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 12px 30px rgba(0,0,0,.28);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform .25s ease, border-color .25s ease, color .25s ease, background .25s ease;
+}
+
+.contact-form-close:hover,
+.contact-form-close:focus-visible {
+    transform: rotate(90deg);
+    border-color: rgba(208,138,77,.62);
+    color: #f1c49b;
+    background: rgba(185,106,47,.12);
+    outline: none;
+}
+
+.contact-form-panel[hidden] {
+    display: none !important;
+}
+
+.contact-form-panel {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 2000 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 32px 20px !important;
+    overflow-y: auto !important;
+    background: rgba(2,6,11,.68) !important;
+    backdrop-filter: blur(12px) saturate(115%) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(115%) !important;
+    animation: mjModalIn .22s ease both;
+}
+
+.contact-form-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 15%, rgba(185,106,47,.08), transparent 38%);
+    pointer-events: none;
+}
+
+.contact-form-panel .contact-form,
+.contact-form-panel .form-note {
+    position: relative;
+    z-index: 2;
+    width: min(680px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-form-panel .contact-form {
+    padding: 32px;
+    background: rgba(11,17,25,.94) !important;
+    border: 1px solid rgba(255,255,255,.14) !important;
+    border-radius: 22px !important;
+    box-shadow: 0 30px 90px rgba(0,0,0,.48) !important;
+    backdrop-filter: blur(18px) saturate(120%);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+}
+
+.contact-form-panel .form-note {
+    margin-top: 14px;
+    padding: 0 8px 12px;
+    color: #aebbc4 !important;
+    font-size: 12px;
+    text-align: center;
+}
+
+.contact-form-panel .form-field {
+    margin-bottom: 18px;
+}
+
+.contact-form-panel label {
+    display: block;
+    margin-bottom: 7px;
+    color: #dce5eb !important;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+}
+
+.contact-form-panel input,
+.contact-form-panel select,
+.contact-form-panel textarea {
+    width: 100%;
+    border: 1px solid rgba(255,255,255,.13) !important;
+    border-radius: 12px !important;
+    background: rgba(255,255,255,.045) !important;
+    color: #f5f7f8 !important;
+    caret-color: var(--cta-amber-light);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+    transition: border-color .25s ease, background .25s ease, box-shadow .25s ease;
+}
+
+.contact-form-panel input,
+.contact-form-panel select {
+    min-height: 48px;
+    padding: 0 14px;
+}
+
+.contact-form-panel textarea {
+    padding: 13px 14px;
+    resize: vertical;
+}
+
+.contact-form-panel input:focus,
+.contact-form-panel select:focus,
+.contact-form-panel textarea:focus {
+    outline: none !important;
+    border-color: rgba(208,138,77,.68) !important;
+    background: rgba(255,255,255,.065) !important;
+    box-shadow: 0 0 0 3px rgba(185,106,47,.10) !important;
+}
+
+/* Enquiry dropdown: dark native menu instead of white */
+.contact-form-panel select,
+.contact-form select#contact-enquiry {
+    color-scheme: dark !important;
+    appearance: auto;
+    background-color: #0d141b !important;
+    color: #f5f7f8 !important;
+}
+
+.contact-form-panel select option,
+.contact-form select#contact-enquiry option {
+    background: #0d141b !important;
+    color: #f5f7f8 !important;
+}
+
+.contact-form-panel select option:checked,
+.contact-form select#contact-enquiry option:checked {
+    background: #2a211b !important;
+    color: #f1c49b !important;
+}
+
+.contact-form-panel .button.primary {
+    width: 100%;
+    justify-content: center;
+    margin-top: 4px;
+}
+
+.form-status {
+    margin-top: 12px;
+    color: #cbd6dd !important;
+}
+
+.form-status[data-state="success"] { color: #9fd3b0 !important; }
+.form-status[data-state="error"] { color: #e3a4a4 !important; }
+
+@keyframes mjModalIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 700px) {
+    .contact-form-close { top: 12px; right: 12px; width: 40px; height: 40px; }
+
+    .contact-form-panel {
+        padding: 14px !important;
+    }
+
+    .contact-form-panel .contact-form {
+        width: 100%;
+        padding: 22px 18px;
+        border-radius: 18px !important;
+    }
+
+    .contact-form-panel input,
+    .contact-form-panel select {
+        min-height: 50px;
+    }
+
+    .contact-form-panel textarea {
+        min-height: 150px;
+    }
+
+    .contact-form-panel .form-note {
+        font-size: 11px;
+    }
 }
