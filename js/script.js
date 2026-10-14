@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const revealElements = document.querySelectorAll(
         ".section-heading, .service-card, .project-card, .writing-card, " +
         ".writing-item, .contact-card, .about-preview, .contact-project-content, " +
-        ".capability, .info-box, .paper"
+        ".capability, .info-box, .paper, .archive-card, .archive-toolbar-inner"
     );
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeImageViewer = () => {
         if (!imageViewer) return;
         imageViewer.classList.remove("active");
+        imageViewer.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "";
     };
 
@@ -125,4 +126,157 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") closeImageViewer();
     });
+
+    // Archive hero background rotation
+    const archiveHero = document.querySelector(".archive-hero");
+    if (archiveHero && !reduceMotion) {
+        let archiveBackgroundIndex = 0;
+        window.setInterval(() => {
+            archiveBackgroundIndex = archiveBackgroundIndex === 0 ? 1 : 0;
+            archiveHero.classList.toggle("show-second-bg", archiveBackgroundIndex === 1);
+        }, 7000);
+    }
+
+    // Archive video controls
+    const archiveVideos = document.querySelectorAll(".archive-video");
+    archiveVideos.forEach((video) => {
+        video.addEventListener("play", () => {
+            archiveVideos.forEach((otherVideo) => {
+                if (otherVideo !== video) otherVideo.pause();
+            });
+        });
+    });
+
+    // Archive projects and videos
+    const archiveGrid = document.querySelector(".archive-grid");
+    const archiveFilters = document.querySelectorAll(".archive-filter");
+    const archiveEmpty = document.querySelector(".archive-empty");
+
+    const archiveProjects = [
+        {
+            title: "Solar Dryer",
+            category: "cad",
+            type: "CAD / Mechanical Design",
+            video: "videos/solar-dryer.mp4",
+            description: "A documented solar dryer design project, showing the design process and practical engineering work behind the project.",
+            meta: ["CAD", "Mechanical Design"]
+        },
+        {
+            title: "Motorized Screw Jack",
+            category: "cad",
+            type: "CAD / Mechanical Design",
+            video: "videos/motorized-screw-jack.mp4",
+            description: "A mechanical CAD project documenting the model, mechanism and design development process.",
+            meta: ["Fusion 360", "Machine Design"]
+        },
+        {
+            title: "Cannon Project",
+            category: "cad",
+            type: "CAD Project",
+            video: "videos/cannon-project.mp4",
+            description: "A documented CAD project from my modelling and design practice.",
+            meta: ["CAD", "Design Practice"]
+        },
+        {
+            title: "Laptop Stand",
+            category: "cad",
+            type: "CAD Design",
+            video: "videos/laptop-stand.mp4",
+            description: "A CAD design created as part of my modelling practice and design challenge.",
+            meta: ["CAD", "Design Challenge"]
+        }
+    ];
+
+    const createArchiveCard = (project, index) => {
+        const card = document.createElement("article");
+        card.className = "archive-card";
+        if (index === 0) card.classList.add("archive-card-featured");
+        card.dataset.archiveCategory = project.category;
+
+        const media = document.createElement("div");
+        media.className = "archive-media";
+
+        const video = document.createElement("video");
+        video.className = "archive-video";
+        video.preload = "metadata";
+        video.playsInline = true;
+        video.controls = true;
+        video.setAttribute("aria-label", `${project.title} project video`);
+
+        const source = document.createElement("source");
+        source.src = project.video;
+        source.type = "video/mp4";
+        video.appendChild(source);
+
+        const label = document.createElement("span");
+        label.className = "archive-media-label";
+        label.textContent = `${project.category.toUpperCase()} / ${String(index + 1).padStart(2, "0")}`;
+
+        media.append(video, label);
+
+        const body = document.createElement("div");
+        body.className = "archive-card-body";
+
+        const type = document.createElement("span");
+        type.className = "archive-type";
+        type.textContent = project.type;
+
+        const title = document.createElement("h2");
+        title.textContent = project.title;
+
+        const description = document.createElement("p");
+        description.textContent = project.description;
+
+        const meta = document.createElement("div");
+        meta.className = "archive-meta";
+        project.meta.forEach((item) => {
+            const tag = document.createElement("span");
+            tag.textContent = item;
+            meta.appendChild(tag);
+        });
+
+        body.append(type, title, description, meta);
+        card.append(media, body);
+
+        video.addEventListener("play", () => {
+            document.querySelectorAll(".archive-video").forEach((otherVideo) => {
+                if (otherVideo !== video) otherVideo.pause();
+            });
+        });
+
+        video.addEventListener("error", () => {
+            video.setAttribute("aria-label", `${project.title} video could not be loaded`);
+        });
+
+        return card;
+    };
+
+    if (archiveGrid) {
+        archiveGrid.innerHTML = "";
+        archiveProjects.forEach((project, index) => {
+            archiveGrid.appendChild(createArchiveCard(project, index));
+        });
+    }
+
+    const archiveCards = document.querySelectorAll(".archive-card");
+
+    if (archiveFilters.length && archiveCards.length) {
+        const applyArchiveFilter = (filter) => {
+            let visibleCount = 0;
+            archiveFilters.forEach((button) => {
+                button.classList.toggle("active", button.dataset.filter === filter);
+            });
+            archiveCards.forEach((card) => {
+                const category = card.dataset.archiveCategory || "";
+                const visible = filter === "all" || category === filter;
+                card.hidden = !visible;
+                if (visible) visibleCount += 1;
+            });
+            if (archiveEmpty) archiveEmpty.hidden = visibleCount !== 0;
+        };
+        archiveFilters.forEach((button) => {
+            button.addEventListener("click", () => applyArchiveFilter(button.dataset.filter || "all"));
+        });
+    }
+
 });

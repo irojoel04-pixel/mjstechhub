@@ -6400,3 +6400,842 @@ button.button:active {
         margin-top: 9px !important;
     }
 }
+
+
+/* =========================================================
+   MJ HUB ARCHIVE
+   Public archive page. Uses the existing site design system.
+========================================================= */
+.archive-page {
+    background: #080d12;
+    color: #f5f7f8;
+}
+
+.archive-hero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 145px 7% 85px;
+    border-bottom: 1px solid rgba(255,255,255,.10);
+    background: #05080c;
+}
+
+.archive-hero::before,
+.archive-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: opacity 1.2s ease;
+}
+
+.archive-hero::before {
+    background-image: linear-gradient(90deg, rgba(3,6,10,.94) 0%, rgba(3,6,10,.72) 42%, rgba(3,6,10,.42) 100%), url("images/achive.jpg");
+    opacity: 1;
+}
+
+.archive-hero::after {
+    background-image: linear-gradient(90deg, rgba(3,6,10,.94) 0%, rgba(3,6,10,.72) 42%, rgba(3,6,10,.42) 100%), url("images/achive-1.jpg");
+    opacity: 0;
+}
+
+.archive-hero.show-second-bg::before {
+    opacity: 0;
+}
+
+.archive-hero.show-second-bg::after {
+    opacity: 1;
+}
+
+.archive-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 78% 22%, rgba(111,99,255,.14), transparent 32%),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size: auto, 64px 64px, 64px 64px;
+    pointer-events: none;
+}
+
+.archive-hero-mark {
+    position: absolute;
+    right: 7%;
+    bottom: 28px;
+    color: rgba(255,255,255,.30);
+    font: 700 10px/1 Consolas, "Courier New", monospace;
+    letter-spacing: 2px;
+}
+
+.archive-hero-inner {
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+.archive-hero .eyebrow,
+.archive-toolbar .eyebrow {
+    color: #d08a4d !important;
+}
+
+.archive-hero h1 {
+    margin: 12px 0 25px;
+    color: #ffffff;
+    font-size: clamp(50px, 8vw, 94px);
+    line-height: .95;
+    letter-spacing: -4px;
+}
+
+.archive-hero h1 span {
+    color: #c7d0d8;
+}
+
+.archive-hero-text {
+    max-width: 760px;
+    color: #c7d2dc;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.archive-toolbar {
+    padding: 65px 7% 30px;
+    background: #080d12;
+}
+
+.archive-toolbar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 35px;
+}
+
+.archive-toolbar h2 {
+    color: #ffffff;
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -1.8px;
+}
+
+.archive-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.archive-filter {
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 999px;
+    padding: 10px 16px;
+    background: rgba(255,255,255,.035);
+    color: #bfcbd4;
+    font: 700 12px/1 Arial, sans-serif;
+    letter-spacing: .5px;
+    cursor: pointer;
+    transition: all .25s ease;
+}
+
+.archive-filter:hover,
+.archive-filter.active {
+    border-color: #b96a2f;
+    background: rgba(185,106,47,.14);
+    color: #e2a66f;
+    box-shadow: 0 0 0 1px rgba(185,106,47,.10);
+}
+
+.archive-section {
+    padding: 35px 7% 110px;
+    background: #080d12;
+}
+
+.archive-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.archive-card {
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.11);
+    border-radius: 20px;
+    background: rgba(16,23,30,.84);
+    box-shadow: 0 16px 50px rgba(0,0,0,.20);
+    transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+}
+
+.archive-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(208,138,77,.52);
+    box-shadow: 0 24px 60px rgba(0,0,0,.30);
+}
+
+.archive-card[hidden] {
+    display: none !important;
+}
+
+.archive-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    overflow: hidden;
+    background: #05080c;
+    border-bottom: 1px solid rgba(255,255,255,.09);
+}
+
+.archive-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.archive-video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    background: #05080c;
+    cursor: pointer;
+}
+
+.archive-card:hover .archive-video {
+    outline: 1px solid rgba(208,138,77,.18);
+    outline-offset: -1px;
+}
+
+.archive-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 48%, rgba(5,8,12,.65));
+}
+
+.archive-media-label {
+    position: absolute;
+    z-index: 2;
+    left: 18px;
+    bottom: 16px;
+    color: #ffffff;
+    font: 700 10px/1 Arial, sans-serif;
+    letter-spacing: 1.7px;
+}
+
+.archive-media-placeholder {
+    display: grid;
+    place-items: center;
+    background:
+        linear-gradient(90deg, rgba(185,106,47,.10) 1px, transparent 1px),
+        linear-gradient(rgba(185,106,47,.10) 1px, transparent 1px),
+        #101720;
+    background-size: 42px 42px;
+    color: rgba(255,255,255,.42);
+    font: 700 11px/1 Consolas, "Courier New", monospace;
+    letter-spacing: 2px;
+}
+
+.archive-card-body {
+    padding: 26px 28px 30px;
+}
+
+.archive-type {
+    color: #d08a4d;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+}
+
+.archive-card h2 {
+    margin: 10px 0 12px;
+    color: #ffffff;
+    font-size: 27px;
+    line-height: 1.15;
+}
+
+.archive-card p {
+    color: #c3ced7;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.archive-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 22px;
+}
+
+.archive-meta span {
+    padding: 6px 9px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 999px;
+    color: #aebbc5;
+    background: rgba(255,255,255,.035);
+    font-size: 10px;
+    letter-spacing: .5px;
+}
+
+.archive-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.archive-actions .button {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.archive-status {
+    color: #8997a3;
+    font-size: 11px;
+    letter-spacing: .4px;
+}
+
+.archive-note,
+.archive-empty {
+    max-width: 1100px;
+    margin: 28px auto 0;
+    color: #8997a3;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.archive-empty {
+    text-align: center;
+    padding: 35px 0 0;
+}
+
+.archive-page .image-viewer {
+    z-index: 3000;
+}
+
+@media (max-width: 900px) {
+    .archive-toolbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .archive-filters {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 760px) {
+    .archive-hero {
+        padding: 115px 6% 65px;
+    }
+    .archive-hero h1 {
+        letter-spacing: -2.5px;
+    }
+    .archive-toolbar,
+    .archive-section {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+    .archive-grid {
+        grid-template-columns: 1fr;
+    }
+    .archive-media {
+        height: 220px;
+    }
+    .archive-card-body {
+        padding: 24px;
+    }
+}
+
+
+/* MJ's Hub: targeted refinements from the homepage/contact structure review */
+.site-logo .logo-apostrophe {
+    color: var(--cta-amber-light, #d08a4d);
+    font-size: .72em;
+    letter-spacing: -.04em;
+}
+
+.hero-intro h1 {
+    max-width: 790px;
+    font-size: clamp(46px, 6.2vw, 84px);
+    line-height: 1.02;
+    letter-spacing: -.035em;
+}
+
+.hero-intro .hero-statement {
+    max-width: 690px;
+    line-height: 1.75;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.hero-buttons .button {
+    width: auto;
+    min-width: 0;
+    min-height: 44px;
+    padding: 12px 18px;
+    flex: 0 0 auto;
+}
+
+@media (max-width: 700px) {
+    .hero-buttons {
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 10px;
+        padding-right: 18px;
+    }
+
+    .hero-buttons .button {
+        display: inline-flex;
+        width: auto !important;
+        max-width: 100%;
+        min-height: 42px;
+        padding: 11px 14px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .hero-intro h1 {
+        font-size: clamp(38px, 10.5vw, 58px);
+        letter-spacing: -.04em;
+        line-height: 1.04;
+    }
+
+    .hero-intro .hero-statement {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+}
+
+.contact-quick-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 30px;
+}
+
+.contact-details {
+    margin-top: 20px;
+    display: grid;
+    gap: 8px;
+}
+
+.contact-detail-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    width: fit-content;
+    text-decoration: none;
+}
+
+.contact-detail-label {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+}
+
+.contact-detail-link strong {
+    color: var(--text);
+    font-size: clamp(16px, 2vw, 20px);
+    overflow-wrap: anywhere;
+}
+
+.contact-detail-note {
+    margin: 0;
+    max-width: 560px;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.contact-social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.contact-social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    color: var(--text);
+    background: rgba(255,255,255,.035);
+    transition: transform .2s ease, border-color .2s ease, color .2s ease, background .2s ease;
+}
+
+.contact-social-icons a svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.contact-social-icons a:hover,
+.contact-social-icons a:focus-visible {
+    color: var(--cta-amber-light, #d08a4d);
+    border-color: var(--cta-amber, #b96a2f);
+    background: rgba(185,106,47,.1);
+    transform: translateY(-2px);
+}
+
+.contact-art-project .contact-project-content {
+    max-width: 760px;
+}
+
+@media (max-width: 700px) {
+    .contact-quick-section {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .contact-social-icons {
+        justify-content: flex-start;
+    }
+}
+
+
+/* =========================================================
+   MJ'S HUB — HOMEPAGE STRUCTURE & HERO PORTRAIT REFINEMENT
+   Additive overrides: preserve the existing site design system.
+========================================================= */
+.home-hero {
+    overflow: hidden;
+    padding-top: clamp(78px, 9vw, 126px);
+    padding-bottom: 28px;
+}
+
+.home-hero .home-hero-main {
+    grid-template-columns: minmax(0, 1.16fr) minmax(280px, .84fr);
+    align-items: center;
+    gap: clamp(32px, 5vw, 76px);
+    max-width: 1280px;
+}
+
+.home-hero .home-hero-intro {
+    padding-left: clamp(24px, 3vw, 45px);
+    max-width: 760px;
+}
+
+.home-hero .home-hero-intro .eyebrow {
+    margin-bottom: 22px;
+}
+
+.home-hero .home-hero-intro h1 {
+    max-width: 780px;
+    margin-bottom: 24px;
+    font-size: clamp(44px, 5.5vw, 78px);
+    line-height: 1.02;
+    letter-spacing: -.045em;
+}
+
+.home-hero .home-hero-intro h1 span {
+    color: var(--text-soft);
+}
+
+.home-hero .home-hero-intro .hero-statement {
+    max-width: 650px;
+    margin-bottom: 28px;
+    font-size: clamp(16px, 1.45vw, 20px);
+    line-height: 1.75;
+}
+
+.home-hero .hero-buttons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.home-hero .hero-buttons .button {
+    width: auto;
+    min-width: 0;
+    min-height: 44px;
+    padding: 12px 17px;
+    flex: 0 0 auto;
+}
+
+.home-hero-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.home-hero-skills span {
+    padding: 7px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text-muted);
+    font-size: 11px;
+    letter-spacing: .02em;
+}
+
+.home-hero-visual {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 clamp(8px, 2vw, 28px) 0 0;
+}
+
+.home-hero-photo-frame {
+    position: relative;
+    width: min(100%, 390px);
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border: 1px solid rgba(208, 138, 77, .42);
+    border-radius: 46% 46% 22px 22px;
+    background: linear-gradient(145deg, rgba(208,138,77,.12), rgba(127,155,255,.08));
+    box-shadow: 0 24px 70px rgba(0,0,0,.28);
+}
+
+.home-hero-photo-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background: linear-gradient(180deg, transparent 62%, rgba(5,8,14,.24));
+}
+
+.home-hero-photo-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+}
+
+.home-hero-photo-fallback {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    color: var(--text);
+    font-size: clamp(60px, 8vw, 100px);
+    font-weight: 800;
+    letter-spacing: -.06em;
+}
+
+.home-hero-photo-caption {
+    width: min(100%, 390px);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 14px;
+    color: var(--text-muted);
+    font-size: 9px;
+    letter-spacing: .12em;
+    line-height: 1.5;
+}
+
+.home-hero-caption-dot {
+    flex: 0 0 7px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--cta-amber, #b96a2f);
+    box-shadow: 0 0 12px rgba(185,106,47,.45);
+}
+
+.home-hero .hero-bottom {
+    max-width: 1280px;
+    margin: 48px auto 0;
+    padding-left: clamp(24px, 3vw, 45px);
+}
+
+.home-hero .hero-bottom a {
+    color: var(--cta-amber-light, #d08a4d);
+    text-decoration: none;
+}
+
+.home-hero .hero-bottom a:hover { text-decoration: underline; }
+
+/* The section order is Hero → What I Do → Selected Works → My Approach → Start a Project. */
+.home-hero + .services,
+.home-hero + .services + .project-section,
+.home-hero + .services + .project-section + .approach-section,
+.home-hero + .services + .project-section + .approach-section + .cta {
+    position: relative;
+}
+
+@media (max-width: 900px) {
+    .home-hero .home-hero-main {
+        grid-template-columns: minmax(0, 1fr) minmax(220px, .72fr);
+        gap: 28px;
+    }
+    .home-hero .home-hero-intro h1 { font-size: clamp(40px, 6vw, 58px); }
+    .home-hero .home-hero-visual { padding-right: 0; }
+}
+
+@media (max-width: 700px) {
+    .home-hero {
+        padding: 74px 20px 24px;
+    }
+    .home-hero .home-hero-main {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 30px;
+    }
+    .home-hero .home-hero-intro {
+        padding-left: 22px;
+        padding-right: 2px;
+    }
+    .home-hero .home-hero-intro .eyebrow { margin-bottom: 17px; }
+    .home-hero .home-hero-intro h1 {
+        max-width: 600px;
+        font-size: clamp(39px, 10.5vw, 58px);
+        line-height: 1.04;
+        letter-spacing: -.045em;
+        margin-bottom: 18px;
+    }
+    .home-hero .home-hero-intro .hero-statement {
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 22px;
+    }
+    .home-hero .hero-buttons {
+        gap: 10px;
+        align-items: center;
+    }
+    .home-hero .hero-buttons .button {
+        width: auto !important;
+        min-width: 0;
+        max-width: 100%;
+        min-height: 42px;
+        padding: 11px 14px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+    .home-hero-skills { gap: 7px; margin-top: 19px; }
+    .home-hero-skills span { font-size: 10px; padding: 6px 8px; }
+    .home-hero .home-hero-visual {
+        width: 100%;
+        max-width: 390px;
+        margin: 0 auto;
+        padding: 0 0 0 22px;
+        align-items: flex-start;
+    }
+    .home-hero-photo-frame { width: min(100%, 310px); aspect-ratio: 4 / 4.4; }
+    .home-hero-photo-caption { width: min(100%, 310px); font-size: 8px; }
+    .home-hero .hero-bottom {
+        margin-top: 32px;
+        padding-left: 22px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 380px) {
+    .home-hero .hero-buttons .button { padding: 10px 11px; font-size: 12px; }
+    .home-hero .home-hero-intro h1 { font-size: 37px; }
+}
+
+
+/* Homepage portrait: mirror the About page's circular portrait treatment.
+   Scoped overrides prevent older image zoom rules from cropping the homepage photo. */
+.home-hero .home-hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+}
+
+.home-hero .home-profile-photo-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    width: min(100%, 300px);
+    margin: 0 auto;
+}
+
+.home-hero .home-profile-photo-frame.profile-photo-circle {
+    position: relative;
+    width: min(300px, 100%);
+    max-width: 300px;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    overflow: hidden;
+    border-radius: 50% !important;
+    border: 1px solid rgba(111, 99, 255, .44) !important;
+    background: #111827 !important;
+    box-shadow: 0 0 0 12px rgba(111, 99, 255, .055), 0 30px 80px rgba(0, 0, 0, .35);
+}
+
+.home-hero .home-profile-photo-frame.profile-photo-circle img {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover !important;
+    object-position: 30% 140% !important;
+    transform: scale(2.50) !important;
+    transform-origin: 19% 0% !important;
+}
+
+.home-hero .home-profile-photo-frame .profile-photo-fallback {
+    position: absolute;
+    inset: 0;
+    display: none;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--text);
+    background: #111827;
+    font-size: 64px;
+    font-weight: 800;
+}
+
+.home-hero .home-profile-photo-wrap .profile-photo-caption {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1.5;
+    letter-spacing: .02em;
+}
+
+@media (max-width: 700px) {
+    .home-hero .home-hero-main {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .home-hero .home-hero-visual {
+        justify-content: center;
+        padding: 8px 0 0;
+    }
+
+    .home-hero .home-profile-photo-wrap {
+        width: min(240px, 76vw);
+        margin-inline: auto;
+    }
+
+    .home-hero .home-profile-photo-frame.profile-photo-circle {
+        width: 100%;
+        max-width: 240px;
+    }
+}
